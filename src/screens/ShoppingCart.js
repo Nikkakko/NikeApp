@@ -7,17 +7,20 @@ import {
   Pressable,
   ScrollView,
 } from 'react-native';
-import cart from '../data/cart';
 import CartListItem from '../components/CartListItem';
 import ShoppingCartTotals from '../components/ShoppingCartTotals';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useDispatch, useSelector } from 'react-redux';
 
 const ShoppingCart = () => {
+  const { items } = useSelector(state => state.cart);
+
+  const dispatch = useDispatch();
+
   const checkOut = () => {};
   return (
     <>
       <FlatList
-        data={cart}
+        data={items}
         renderItem={({ item }) => (
           <CartListItem cartItem={item} key={item.id} />
         )}
